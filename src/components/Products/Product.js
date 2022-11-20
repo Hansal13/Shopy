@@ -21,14 +21,10 @@ const Info = styled.div`
 `;
 
 const Container = styled.div`
-  flex: 1 1 calc(25% - 10px);
-  margin: 5px;
-  min-width: 280px;
   height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5fbfd;
   position: relative;
   &:hover ${Info} {
     opacity: 1;

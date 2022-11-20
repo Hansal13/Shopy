@@ -10,13 +10,26 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
+const Wrapper = styled.div`
+  flex: 1 1 calc(25% - 10px);
+  margin: 5px;
+  min-width: 280px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5fbfd;
+`;
+
 const Products = () => {
   return (
     <Container>
       {popularProducts.map((item) => (
-        <Link to="/product">
-          <Product item={item} key={item.id} />
-        </Link>
+        <Wrapper>
+          <Link to="/product" style={{ width: "100%" }}>
+            <Product item={item} key={item.id} />
+          </Link>
+        </Wrapper>
       ))}
     </Container>
   );

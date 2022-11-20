@@ -173,9 +173,7 @@ const ProductCart = () => {
               </ProductDetails>
               <PriceDetails>
                 <AmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
+                  <ProductAmount>Item: 2</ProductAmount>
                 </AmountContainer>
                 <ProductPrice>$30</ProductPrice>
               </PriceDetails>
@@ -196,9 +194,7 @@ const ProductCart = () => {
               </ProductDetails>
               <PriceDetails>
                 <AmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
+                  <ProductAmount>Item: 2</ProductAmount>
                 </AmountContainer>
                 <ProductPrice>$30</ProductPrice>
               </PriceDetails>

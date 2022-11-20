@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
@@ -60,16 +60,59 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleInput = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormData((prevData) => {
+      return {
+        ...prevData,
+        [name]: value,
+      };
+    });
+  };
   return (
     <Container>
       <Wrapper>
         <Title>Create An Account</Title>
         <Form>
-          <Input placeholder="Enter Your Name" />
-          <Input placeholder="Enter Username" />
-          <Input placeholder="Enter Email" />
-          <Input placeholder="Enter Password" />
-          <Input placeholder="Enter Confirm Password" />
+          <Input
+            placeholder="Enter Your Name"
+            value={formData.name}
+            onChange={handleInput}
+            name="name"
+          />
+          <Input
+            placeholder="Enter Username"
+            value={formData.username}
+            onChange={handleInput}
+            name="username"
+          />
+          <Input
+            placeholder="Enter Email"
+            value={formData.email}
+            onChange={handleInput}
+            name="email"
+          />
+          <Input
+            placeholder="Enter Password"
+            value={formData.password}
+            onChange={handleInput}
+            name="password"
+          />
+          <Input
+            placeholder="Enter Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleInput}
+            name="confirmPassword"
+          />
           <Button>Create Account</Button>
         </Form>
       </Wrapper>

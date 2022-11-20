@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar/Navbar";
 import NewsLetter from "../components/NewsLetter/NewsLetter";
 import styled from "styled-components";
 import { Add, Remove } from "@mui/icons-material";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding: 50px;
@@ -92,7 +94,7 @@ const Amount = styled.p`
   justify-content: center;
   margin: 0 5px;
 `;
-const Button = styled.button`
+const Button = styled.div`
   font-size: 20px;
   margin: 0 0 0 20px;
   border: 2px solid teal;
@@ -102,6 +104,8 @@ const Button = styled.button`
   font-weight: 500;
 `;
 const Product = () => {
+  const [qantity, setQantity] = useState(1);
+  const [disabled, setDisable] = useState(false);
   return (
     <>
       <Announcement />
@@ -146,11 +150,27 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <button
+                onClick={() => {
+                  qantity <= 1 ? setDisable(true) : setDisable(false),
+                    setQantity(qantity - 1);
+                }}
+                disabled={disabled}
+              >
+                <Remove />
+              </button>
+              <Amount>{qantity}</Amount>
+              <button
+                onClick={() => {
+                  setQantity(qantity + 1), setDisable(false);
+                }}
+              >
+                <Add />
+              </button>
             </AmountContainer>
-            <Button>Add To Cart</Button>
+            <Button>
+              <Link to="/cart">Add To Cart</Link>
+            </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

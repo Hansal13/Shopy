@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
@@ -65,13 +65,37 @@ const Link = styled.a`
   margin: 10px 0;
 `;
 const LogIn = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+  const handleInput = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormData((prevData) => {
+      return {
+        ...prevData,
+        [name]: value,
+      };
+    });
+  };
   return (
     <Container>
       <Wrapper>
         <Title>Log In</Title>
         <Form>
-          <Input placeholder="Enter Username" />
-          <Input placeholder="Enter Password" />
+          <Input
+            placeholder="Enter Username"
+            value={formData.username}
+            onChange={handleInput}
+            name="username"
+          />
+          <Input
+            placeholder="Enter Password"
+            value={formData.password}
+            onChange={handleInput}
+            name="password"
+          />
           <Button>Log In</Button>
           <Link>Forgot Password</Link>
           <Link>Create New Account</Link>
